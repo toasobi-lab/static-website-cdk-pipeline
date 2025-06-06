@@ -6,19 +6,30 @@ This project uses AWS CDK to deploy a static website hosting solution on AWS, fe
 
 The architecture implemented by this CDK stack is as follows:
 
-```mermaid
-graph TD;
-    A["GitHub Repo (App Source)"] --> B("AWS CodePipeline");
-    B --> C{"GitHub Source Action"};
-    B --> D{"AWS CodeBuild Project"};
-    C --> E["AWS Secrets Manager (GitHub OAuth Token)"];
-    D --> F["S3 Bucket (Private)"];
-    F --> G["CloudFront CDN"];
-    G --> H["HTTPS delivery to users"];
-    H --> I["https://your-cloudfront-domain.cloudfront.net"];
-
-    C -- Clone Code --> D;
-    D -- Upload Built Files --> F;
+```
+GitHub Repo (App Source)
+    │
+    ▼
+AWS CodePipeline
+    ├───> GitHub Source Action
+    │         │
+    │         │ (Uses GitHub OAuth Token from Secrets Manager)
+    │         ▼
+    └───> AWS CodeBuild Project
+              │
+              │ (Builds application, uploads files)
+              ▼
+          S3 Bucket (Private)
+              │
+              │ (via Origin Access Identity)
+              ▼
+          CloudFront CDN
+              │
+              ▼
+HTTPS delivery to users
+    │
+    ▼
+https://your-cloudfront-domain.cloudfront.net
 ```
 
 ## Prerequisites
