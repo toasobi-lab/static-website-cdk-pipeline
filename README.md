@@ -46,7 +46,7 @@ https://your-cloudfront-domain.cloudfront.net
 1.  **Clone the repository:**
 
     ```bash
-    git clone YOUR_REPO_URL
+    git clone https://github.com/toasobi-lab/static-website-cdk-pipeline
     cd static-website-cdk
     ```
 
