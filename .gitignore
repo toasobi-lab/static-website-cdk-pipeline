@@ -1,8 +1,23 @@
-*.js
-!jest.config.js
-*.d.ts
-node_modules
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules
+
+# CDK artifacts
+/cdk.out
+
+# TypeScript compilation output
+bin/**/*.js
+lib/**/*.js
+config/**/*.js
+
+bin/**/*.d.ts
+lib/**/*.d.ts
+config/**/*.d.ts
+
+# misc
+.DS_Store
+test/__snapshots__
 
 # CDK asset staging directory
 .cdk.staging
-cdk.out
