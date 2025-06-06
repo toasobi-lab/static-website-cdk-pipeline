@@ -8,14 +8,14 @@ The architecture implemented by this CDK stack is as follows:
 
 ```mermaid
 graph TD;
-    A[GitHub Repo \(App Source\)] --> B(AWS CodePipeline);
-    B --> C{GitHub Source Action};
-    B --> D{AWS CodeBuild Project};
-    C --> E[AWS Secrets Manager \(GitHub OAuth Token\)];
-    D --> F[S3 Bucket \(Private\)];
-    F --> G[CloudFront CDN];
-    G --> H[HTTPS delivery to users];
-    H --> I[https://your-cloudfront-domain.cloudfront.net];
+    A["GitHub Repo (App Source)"] --> B("AWS CodePipeline");
+    B --> C{"GitHub Source Action"};
+    B --> D{"AWS CodeBuild Project"};
+    C --> E["AWS Secrets Manager (GitHub OAuth Token)"];
+    D --> F["S3 Bucket (Private)"];
+    F --> G["CloudFront CDN"];
+    G --> H["HTTPS delivery to users"];
+    H --> I["https://your-cloudfront-domain.cloudfront.net"];
 
     C -- Clone Code --> D;
     D -- Upload Built Files --> F;
